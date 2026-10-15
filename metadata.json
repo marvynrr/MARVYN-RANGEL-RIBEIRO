@@ -1,0 +1,8 @@
+{
+  "name": "Remix Dr. Yago Rangel Ramos - Advocacia Previdenciária e Direito à Saúde",
+  "description": "Escritório de advocacia especializado em Direito Previdenciário (aposentadorias, BPC/LOAS, auxílio-doença) e Direito à Saúde (medicamentos de alto custo e tratamentos negados). Atendimento humanizado e focado em resultados. OAB/RJ 209.621.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
