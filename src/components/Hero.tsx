@@ -1,5 +1,5 @@
 import { MessageCircle, ShieldCheck, Scale, Award, ArrowRight, CheckCircle2 } from "lucide-react";
-import { LAWYER_NAME, OAB_NUMBER, getWhatsAppUrl, LAWYER_STATS } from "../data/legalData";
+import { LAWYER_NAME, OAB_NUMBER, getWhatsAppUrl, LAWYER_STATS, LAWYER_PHOTO_URL, LAWYER_PHOTO_FALLBACK, WHATSAPP_URL } from "../data/legalData";
 
 export default function Hero() {
   return (
@@ -57,7 +57,7 @@ export default function Hero() {
             {/* Primary & Secondary Call to Actions */}
             <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <a
-                href={getWhatsAppUrl("Olá Dr. Yago, gostaria de uma avaliação sobre o meu caso pelo WhatsApp.")}
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 px-7 py-4 text-base font-bold text-white bg-emerald-600 hover:bg-emerald-500 active:scale-[0.98] transition-all rounded-xl shadow-xl shadow-emerald-950/50 group"
@@ -93,10 +93,13 @@ export default function Hero() {
               <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl">
                 <div className="relative aspect-[3/4] w-full overflow-hidden bg-slate-800">
                   <img
-                    src="/src/assets/images/yago_rangel_lawyer_1792100048346.jpg"
+                    src={LAWYER_PHOTO_URL}
+                    onError={(e) => {
+                      e.currentTarget.src = LAWYER_PHOTO_FALLBACK;
+                    }}
                     alt={`Retrato oficial do advogado ${LAWYER_NAME}`}
                     className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-500"
-                    referrerPolicy="no-referrer"
+                    loading="eager"
                   />
                   {/* Subtle contrast gradient at the base */}
                   <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />

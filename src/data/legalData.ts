@@ -1,15 +1,24 @@
-export const WHATSAPP_USERNAME = "yagorangeladv";
-export const WHATSAPP_BASE_URL = "https://api.whatsapp.com/send/?text&username=yagorangeladv&type=username&app_absent=0&utm_source=ig";
+export const WHATSAPP_URL = "https://w.app/g6imhf";
+export const WHATSAPP_PHONE = "5522999269631";
+export const WHATSAPP_BASE_URL = "https://w.app/g6imhf";
 export const INSTAGRAM_HANDLE = "@yagorangeladv";
 export const INSTAGRAM_URL = "https://www.instagram.com/yagorangeladv/";
 export const LAWYER_NAME = "Dr. Yago Rangel Ramos";
 export const OAB_NUMBER = "OAB/RJ 209.621";
 
+// Image assets provided by user (with direct CDN fallback)
+export const LAWYER_PHOTO_URL = "/images/yagoedit.jpg";
+export const LAWYER_PHOTO_FALLBACK = "https://i.postimg.cc/HYV3dQcW/yagoedit.jpg";
+export const LOGO_URL = "/images/logo.jpg";
+export const LOGO_FALLBACK = "https://i.postimg.cc/M6vtqyM8/logo.jpg";
+export const OFFICE_IMAGE_URL = "/images/office.jpg";
+
 export function getWhatsAppUrl(customMessage?: string): string {
-  const text = customMessage 
-    ? encodeURIComponent(customMessage)
-    : encodeURIComponent("Olá, Dr. Yago! Vi o seu site e gostaria de tirar dúvidas sobre o meu caso.");
-  return `https://api.whatsapp.com/send/?text=${text}&username=${WHATSAPP_USERNAME}&type=username&app_absent=0&utm_source=ig`;
+  if (!customMessage) {
+    return WHATSAPP_URL;
+  }
+  const text = encodeURIComponent(customMessage);
+  return `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${text}`;
 }
 
 export interface ServiceItem {

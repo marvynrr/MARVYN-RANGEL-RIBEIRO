@@ -1,5 +1,5 @@
 import { Scale, MessageCircle, Instagram, ShieldCheck, Mail, MapPin } from "lucide-react";
-import { LAWYER_NAME, OAB_NUMBER, INSTAGRAM_HANDLE, INSTAGRAM_URL, getWhatsAppUrl } from "../data/legalData";
+import { LAWYER_NAME, OAB_NUMBER, INSTAGRAM_HANDLE, INSTAGRAM_URL, getWhatsAppUrl, LOGO_URL, LOGO_FALLBACK, WHATSAPP_URL } from "../data/legalData";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,13 +13,23 @@ export default function Footer() {
           
           {/* Col 1: Law Firm Brand & Bio */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="font-serif-legal font-bold text-xl text-white">
-                {LAWYER_NAME}
-              </span>
-              <span className="text-xs text-amber-500 font-mono font-medium">
-                | {OAB_NUMBER}
-              </span>
+            <div className="flex items-center gap-3">
+              <img
+                src={LOGO_URL}
+                onError={(e) => {
+                  e.currentTarget.src = LOGO_FALLBACK;
+                }}
+                alt={`Logo ${LAWYER_NAME}`}
+                className="w-10 h-10 rounded-xl object-cover border border-amber-500/40 shrink-0"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif-legal font-bold text-xl text-white leading-tight">
+                  {LAWYER_NAME}
+                </span>
+                <span className="text-xs text-amber-500 font-mono font-medium">
+                  {OAB_NUMBER} · Advocacia
+                </span>
+              </div>
             </div>
             
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md">
@@ -38,7 +48,7 @@ export default function Footer() {
               </a>
 
               <a
-                href={getWhatsAppUrl("Olá Dr. Yago, entrei em contato através do rodapé do seu site.")}
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs text-slate-300 hover:text-emerald-400 transition-colors"
@@ -104,7 +114,7 @@ export default function Footer() {
 
             <div className="pt-2">
               <a
-                href={getWhatsAppUrl("Olá Dr. Yago, gostaria de falar com você pelo WhatsApp.")}
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg transition-colors"

@@ -1,5 +1,5 @@
 import { Scale, Award, HeartHandshake, ShieldCheck, CheckCircle2, MessageCircle, ArrowRight } from "lucide-react";
-import { LAWYER_NAME, OAB_NUMBER, getWhatsAppUrl } from "../data/legalData";
+import { LAWYER_NAME, OAB_NUMBER, getWhatsAppUrl, LAWYER_PHOTO_URL, LAWYER_PHOTO_FALLBACK, OFFICE_IMAGE_URL, WHATSAPP_URL } from "../data/legalData";
 
 export default function AboutSection() {
   const credentials = [
@@ -35,10 +35,9 @@ export default function AboutSection() {
             <div className="relative overflow-hidden rounded-2xl border border-slate-800 shadow-xl bg-slate-950">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img
-                  src="/src/assets/images/law_office_practice_1792099108920.jpg"
+                  src={OFFICE_IMAGE_URL}
                   alt="Escritório de advocacia Dr. Yago Rangel Ramos no Rio de Janeiro"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
               </div>
@@ -65,10 +64,12 @@ export default function AboutSection() {
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <img
-                  src="/src/assets/images/yago_rangel_lawyer_1792100048346.jpg"
+                  src={LAWYER_PHOTO_URL}
+                  onError={(e) => {
+                    e.currentTarget.src = LAWYER_PHOTO_FALLBACK;
+                  }}
                   alt={`Dr. Yago Rangel Ramos`}
-                  className="w-10 h-10 rounded-full object-cover object-top border border-amber-500/50"
-                  referrerPolicy="no-referrer"
+                  className="w-11 h-11 rounded-full object-cover object-top border border-amber-500/50 shadow-md"
                 />
                 <div>
                   <div className="text-xs text-white font-bold">{LAWYER_NAME}</div>
@@ -110,7 +111,7 @@ export default function AboutSection() {
             {/* CTA directly to WhatsApp */}
             <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <a
-                href={getWhatsAppUrl("Olá Dr. Yago, li sua apresentação no site e gostaria de consultar meu caso.")}
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 px-6 py-3.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl transition-all shadow-lg shadow-emerald-950/40"

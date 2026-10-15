@@ -1,5 +1,5 @@
 import { MessageCircle, FileUp, Sparkles, ArrowRight, ShieldCheck, Clock, CheckCircle } from "lucide-react";
-import { getWhatsAppUrl } from "../data/legalData";
+import { getWhatsAppUrl, WHATSAPP_URL } from "../data/legalData";
 
 export default function ProcessSection() {
   const steps = [
@@ -88,7 +88,7 @@ export default function ProcessSection() {
           </div>
 
           <a
-            href={getWhatsAppUrl("Olá Dr. Yago, gostaria de iniciar meu atendimento pelo WhatsApp.")}
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl transition-all shadow-xl shadow-emerald-950/60 shrink-0"
